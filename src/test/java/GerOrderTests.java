@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Test;
 import site.nomoreparties.stellarburgers.models.Order;
@@ -10,6 +11,7 @@ import static site.nomoreparties.stellarburgers.constants.ResponseMessage.NEED_A
 public class GerOrderTests extends BaseTest{
 
     @Test
+    @DisplayName("Получение заказов авторизованного юзера")
     public void testGetOrdersOfAuthUser() {
         Response regUser = regUser(newUser);
         String token = regUser.jsonPath().getString("accessToken");
@@ -36,6 +38,7 @@ public class GerOrderTests extends BaseTest{
     }
 
     @Test
+    @DisplayName("Получение заказов неавторизованным юзером")
     public void testGetOrdersUserWithoutAuth() {
         Response regUser = regUser(newUser);
         String token = regUser.jsonPath().getString("accessToken");

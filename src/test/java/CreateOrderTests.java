@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Test;
 import site.nomoreparties.stellarburgers.models.Order;
@@ -12,6 +13,7 @@ import static site.nomoreparties.stellarburgers.constants.ResponseMessage.NO_ID_
 public class CreateOrderTests extends BaseTest {
 
     @Test
+    @DisplayName("Создание заказа авторизованным юзером")
     public void testCreateOrderWithAuth() {
         Response regUser = regUser(newUser);
         String token = regUser.jsonPath().getString("accessToken");
@@ -29,6 +31,7 @@ public class CreateOrderTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Создание заказа без авторизации")
     public void testCreateOrderWithoutAuth() {
         List<String> ingredients = getIngredients()
                 .getBody()
@@ -44,6 +47,7 @@ public class CreateOrderTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Создание заказа без ингредиентов")
     public void testCreateOrderWithoutIngredients() {
         Response regUser = regUser(newUser);
         String token = regUser.jsonPath().getString("accessToken");
@@ -58,6 +62,7 @@ public class CreateOrderTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Создание заказа с некорректным хэшем ингредиентов")
     public void testCreateOrderWithIncorrectIngredients() {
         Response regUser = regUser(newUser);
         String token = regUser.jsonPath().getString("accessToken");

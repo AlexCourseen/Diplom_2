@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +30,7 @@ public class EditUserWithAuthTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Редактирование имени, email, пароля авторизованного юзера")
     public void editUserWithAuth() {
         Response regUser = regUser(newUser);
         String token = regUser.jsonPath().getString("accessToken");

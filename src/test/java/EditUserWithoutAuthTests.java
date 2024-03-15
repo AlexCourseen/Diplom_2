@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +31,7 @@ public class EditUserWithoutAuthTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Редактирование имени, email, пароля неавторизованного юзера")
     public void editUserWithAuth() {
         regUser(newUser);
         if (editName) {

@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Test;
 
@@ -8,6 +9,7 @@ import static site.nomoreparties.stellarburgers.constants.ResponseMessage.USER_E
 public class RegUserTests extends BaseTest {
 
     @Test
+    @DisplayName("Регистрация нового юзера")
     public void testRegNewUser() {
         Response regUser = regUser(newUser);
         regUser
@@ -21,6 +23,7 @@ public class RegUserTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Регистрация уже зарегистрированного юзера")
     public void testRegisterAlreadyRegistredUser() {
         regUser(newUser);
         Response regAlreadyRegistredUser = regUser(newUser);
@@ -32,6 +35,7 @@ public class RegUserTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Регистрация юзера без указания имени")
     public void testRegUserWithoutName() {
         Response regUser = regUser(UserNoName);
         regUser
@@ -42,6 +46,7 @@ public class RegUserTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Регистрация юзера без указания e-mail")
     public void testRegUserWithoutEmail() {
         Response regUser = regUser(UserNoEmail);
         regUser
@@ -52,6 +57,7 @@ public class RegUserTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Регистрация юзера без указания пароля")
     public void testRegUserWithoutPassword() {
         Response regUser = regUser(UserNoPassword);
         regUser

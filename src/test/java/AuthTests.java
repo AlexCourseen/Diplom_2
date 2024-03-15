@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Test;
 import site.nomoreparties.stellarburgers.models.User;
@@ -9,6 +10,7 @@ import static site.nomoreparties.stellarburgers.constants.ResponseMessage.*;
 public class AuthTests extends BaseTest{
 
     @Test
+    @DisplayName("Авторизация зарегистрированного юзера")
     public void testAuthRegistredUser() {
         regUser(newUser);
         User loginUser = new User(newUser.getEmail(), newUser.getPassword());
@@ -24,6 +26,7 @@ public class AuthTests extends BaseTest{
 
     }
     @Test
+    @DisplayName("Авторизация с некорректынм email")
     public void testAuthWithIncorrectEmail() {
         regUser(newUser);
         User loginUser = new User(newUser.getEmail()+"fail", newUser.getPassword());
@@ -36,6 +39,7 @@ public class AuthTests extends BaseTest{
 
     }
     @Test
+    @DisplayName("Авторизация с некорректынм паролем")
     public void testAuthWithIncorrectPassword() {
         regUser(newUser);
         User loginUser = new User(newUser.getEmail(), newUser.getPassword()+"fail");
